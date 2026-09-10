@@ -2,14 +2,24 @@ import 'dart:io';
 
 //--------------------------------Vorname angeben----------------------------------------//
 String? vornameEingabe() {
-  String? vorName = stdin.readLineSync()!;
-  return textEingabePruefen(vorName, 'Wie lautet dein Vorname?');
+  stdout.write("Wie lautet dein Vorname? ");
+  String? vorName = stdin.readLineSync();
+
+  return textEingabePruefen(
+    vorName ?? '',
+    'Wie lautet dein Vorname? ',
+  );
 }
 
 //--------------------------------Nachname angeben---------------------------------------//
 String? nachNameEingabe() {
-  String? nachName = stdin.readLineSync()!;
-  return textEingabePruefen(nachName, 'Wie lautet dein Nachname?');
+  stdout.write("Wie lautet dein Nachname? ");
+  String? nachName = stdin.readLineSync();
+
+  return textEingabePruefen(
+    nachName ?? '',
+    'Wie lautet dein Nachname? ',
+  );
 }
 
 //-------------------------------Tageszeit Begrüßung-------------------------------------//
@@ -76,11 +86,11 @@ String geschlechtsEingabe() {
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Fehlerprüfung>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
 String? textEingabePruefen(String eingabe, String frage) {
-  while (eingabe == null || eingabe.isEmpty) {
+  while (eingabe.isEmpty) {
     stdout.write(frage);
-    eingabe = stdin.readLineSync()!;
+    eingabe = stdin.readLineSync()?? '';
   }
-  print(eingabe);
+
   return eingabe;
 }
 
@@ -89,7 +99,6 @@ void main() {
   // Abfrtage der name
 
   final vorName = vornameEingabe();
-  print(vorName);
   final nachName = nachNameEingabe();
 
   final alter = alterEingabeUser();
