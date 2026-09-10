@@ -99,7 +99,7 @@ void main() {
   // Abfrtage der name
 
   final vorName = vornameEingabe();
-  final nachName = nachNameEingabe();
+S  final nachName = nachNameEingabe();
 
   final alter = alterEingabeUser();
   final geschlecht = geschlechtsEingabe();
