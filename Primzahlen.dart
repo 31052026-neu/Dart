@@ -13,9 +13,9 @@ int maximalZahl() {
 
     stdout.write('Bis zu welcher Zahl sollen Primzahlen gesucht werden? ');
 
-    maxZahl = int.tryParse(eingabe ?? '');
-
     eingabe = stdin.readLineSync();
+
+    maxZahl = int.tryParse(eingabe ?? '');
   }
   return maxZahl;
 }
@@ -33,7 +33,16 @@ bool istPrimzahl(int zahl) {
 }
 //-----------------------------Primzahlen Sammeln----------------------------//
 
-List<int>? primzahlenSammeln(int maxZahl) {}
+List<int> primzahlenSammeln(int maxZahl) {
+
+  List<int> primzahlen = [];
+
+  for (int zahl = 2; zahl <= maxZahl; zahl++) {
+    if (istPrimzahl(zahl))
+    primzahlen.add(zahl);
+  }
+  return primzahlen;
+}
 void main() {
   int maxZahl = maximalZahl();
 
