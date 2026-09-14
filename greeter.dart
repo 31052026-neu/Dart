@@ -5,10 +5,7 @@ String? vornameEingabe() {
   stdout.write("Wie lautet dein Vorname? ");
   String? vorName = stdin.readLineSync();
 
-  return textEingabePruefen(
-    vorName ?? '',
-    'Wie lautet dein Vorname? ',
-  );
+  return textEingabePruefen(vorName ?? '', 'Wie lautet dein Vorname? ');
 }
 
 //--------------------------------Nachname angeben---------------------------------------//
@@ -16,10 +13,7 @@ String? nachNameEingabe() {
   stdout.write("Wie lautet dein Nachname? ");
   String? nachName = stdin.readLineSync();
 
-  return textEingabePruefen(
-    nachName ?? '',
-    'Wie lautet dein Nachname? ',
-  );
+  return textEingabePruefen(nachName ?? '', 'Wie lautet dein Nachname? ');
 }
 
 //-------------------------------Tageszeit Begrüßung-------------------------------------//
@@ -88,7 +82,7 @@ String geschlechtsEingabe() {
 String? textEingabePruefen(String eingabe, String frage) {
   while (eingabe.isEmpty) {
     stdout.write(frage);
-    eingabe = stdin.readLineSync()?? '';
+    eingabe = stdin.readLineSync() ?? '';
   }
 
   return eingabe;
@@ -99,7 +93,7 @@ void main() {
   // Abfrtage der name
 
   final vorName = vornameEingabe();
-S  final nachName = nachNameEingabe();
+  final nachName = nachNameEingabe();
 
   final alter = alterEingabeUser();
   final geschlecht = geschlechtsEingabe();
