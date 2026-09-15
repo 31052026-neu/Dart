@@ -1,20 +1,20 @@
 import 'dart:io';
 
 //--------------------------------Vorname angeben----------------------------------------//
-String? vornameEingabe() {
-  stdout.write("Wie lautet dein Vorname? ");
+String? volidierungVonEingabe(String text) {
+  stdout.write(text);
   String? vorName = stdin.readLineSync();
 
-  return textEingabePruefen(vorName ?? '', 'Wie lautet dein Vorname? ');
+  return textEingabePruefen(vorName ?? '', text);
 }
 
 //--------------------------------Nachname angeben---------------------------------------//
-String? nachNameEingabe() {
-  stdout.write("Wie lautet dein Nachname? ");
-  String? nachName = stdin.readLineSync();
+// String? nachNameEingabe(String text) {
+//   stdout.write(text);
+//   String? nachName = stdin.readLineSync();
 
-  return textEingabePruefen(nachName ?? '', 'Wie lautet dein Nachname? ');
-}
+//   return textEingabePruefen(nachName ?? '', 'Wie lautet dein Nachname? ');
+// }
 
 //-------------------------------Tageszeit Begrüßung-------------------------------------//
 String? tageszeitBegruessung() {
@@ -67,10 +67,16 @@ int alterEingabeUser() {
 String geschlechtsEingabe() {
   String? geschlecht;
 
-  while (geschlecht == null) {
+  while (geschlecht == null ||
+      geschlecht != 'maenlich' ||
+      geschlecht != 'weiblich') {
     stdout.write('Welches Geschlecht hast du? ');
 
     geschlecht = stdin.readLineSync();
+    if (geschlecht != 'maenlich' || geschlecht != 'weiblich') {
+      stdout.write('Eingabe ist Falsch');
+      geschlecht = stdin.readLineSync();
+    }
   }
 
   return geschlecht;
@@ -92,8 +98,8 @@ void main() {
   // final vorName = vornameEingabe();
   // Abfrtage der name
 
-  final vorName = vornameEingabe();
-  final nachName = nachNameEingabe();
+  final vorName = volidierungVonEingabe("Wie lautet dein Vorname? ");
+  final nachName = volidierungVonEingabe("Wie lautet dein Nachname? ");
 
   final alter = alterEingabeUser();
   final geschlecht = geschlechtsEingabe();

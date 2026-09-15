@@ -34,19 +34,21 @@ bool istPrimzahl(int zahl) {
 //-----------------------------Primzahlen Sammeln----------------------------//
 
 List<int> primzahlenSammeln(int maxZahl) {
-
   List<int> primzahlen = [];
 
   for (int zahl = 2; zahl <= maxZahl; zahl++) {
-    if (istPrimzahl(zahl))
-    primzahlen.add(zahl);
+    if (istPrimzahl(zahl)) {
+      print(zahl);
+    }
   }
   return primzahlen;
 }
+
 void main() {
   int maxZahl = maximalZahl();
 
-  print(istPrimzahl(maxZahl));
+  List<int> primzahlen = primzahlenSammeln(maxZahl);
 
   print('Die Maximal Zahl ist : $maxZahl');
+  print('$primzahlen');
 }

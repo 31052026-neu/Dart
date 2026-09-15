@@ -50,7 +50,6 @@ void datumAusgeben(DateTime heute, String wochenTagText) {
     'November',
     'Dezember',
   ];
-
   print(
     'Heute ist ${wochenTag[heute.weekday - 1]}, der ${heute.day}. ${monatsName[heute.month - 1]} ${heute.year}. Es ist der $wochenTagText ${wochenTag[heute.weekday - 1]} im Monat',
   );
@@ -61,7 +60,20 @@ int tageImMonat(DateTime datum) {
   DateTime letzterTag = DateTime(datum.year, datum.month + 1, 0);
   return letzterTag.day;
 }
-//---------------------------------------------------------------------------//
+
+//---------------------------Erster Wochentag im Monat-------------------------------//
+int ersterWochentagImMonat(DateTime datum) {
+  DateTime ersterTag = DateTime(datum.year, datum.month, 1);
+
+  return ersterTag.weekday;
+}
+
+//-----------------------------Kalenderfelder erstellen-------------------------------//
+List<int?> kalenderfelderErstellen(DateTime datum) {
+  List<int?> kalenderFelder = [];
+
+  return kalenderFelder;
+}
 
 void main() {
   final datumNow = datum();
@@ -69,7 +81,8 @@ void main() {
   final nummer = wochentagNummer(datumNow);
   final wochenTagText = wochentagNummerAlsText(nummer);
   final anzahlTage = tageImMonat(datumNow);
-  print(anzahlTage);
+  final ersterWochenTag = ersterWochentagImMonat(datumNow);
+  final leereFelder = ersterWochenTag - 1;
 
   datumAusgeben(datumNow, wochenTagText);
 }
