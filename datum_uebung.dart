@@ -69,8 +69,27 @@ int ersterWochentagImMonat(DateTime datum) {
 }
 
 //-----------------------------Kalenderfelder erstellen-------------------------------//
-List<int?> kalenderfelderErstellen(DateTime datum) {
+List<int?> kalenderFelderErstellen(DateTime datum) {
   List<int?> kalenderFelder = [];
+
+  int leereFelder = ersterWochentagImMonat(datum) - 1;
+  int anzahlTage = tageImMonat(datum);
+  int gesamtFelder = leereFelder + anzahlTage;
+
+  // zählt alle Kalendertage bzw. Felder für den Monat)
+  for (int i = 0; i < gesamtFelder; ++i) {
+    // fügt einen leeren platz hinzu solange i kleiner als leereFelder ist//
+    if (i < leereFelder) {
+      kalenderFelder.add(null);
+    }
+    //Die Rechnung entfernt also zuerst die Verschiebung durch die Leerfelder
+    //und wandelt danach den bei
+    // 0 beginnenden Listenindex in einen bei 1 beginnenden Kalendertag um.
+    else {
+      int tag = i - leereFelder + 1;
+      kalenderFelder.add(tag);
+    }
+  }
 
   return kalenderFelder;
 }
@@ -83,6 +102,7 @@ void main() {
   final anzahlTage = tageImMonat(datumNow);
   final ersterWochenTag = ersterWochentagImMonat(datumNow);
   final leereFelder = ersterWochenTag - 1;
+  final kalenderFelder = kalenderFelderErstellen(datumNow);
 
   datumAusgeben(datumNow, wochenTagText);
 }
